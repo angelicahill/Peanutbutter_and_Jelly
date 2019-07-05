@@ -32,3 +32,47 @@ If you would like to run this program yourself in the terminal all you have to d
 I got some Jelly and Peanut Butter to make myself a scrummy sandwhich and it only took me 2.000504095s time to get it!
 
 ```
+
+**Another Practice Program**
+I also wrote a mini practice program which is a simulation of Ping Pong which uses a channel sending to another channel, and then sending to the main channel in the main function and counts how many times the "ball" is passed between the two players/channels: 
+
+```
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+
+	ch1 := make(chan int)
+
+	go ping(ch1)
+	go pong(ch1)
+
+	time.Sleep(time.Second * 10)
+	x := <-ch1
+	fmt.Println(x)
+}
+
+func ping(ch chan int) {
+	i := 1
+	for {
+		fmt.Println("PING!")
+		time.Sleep(time.Second / 2)
+		ch <- i + 1
+		i = <-ch
+	}
+}
+
+func pong(ch chan int) {
+	for {
+		ii := <-ch
+		fmt.Println("PONG!")
+		time.Sleep(time.Second / 2)
+		ch <- ii + 1
+	}
+}
+
+```

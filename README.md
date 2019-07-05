@@ -21,7 +21,7 @@ I got some Jelly and Peanut Butter to make myself a scrummy sandwhich and it onl
 
 ```
 
-**How to run program?**
+**How to run the program?**
 
 If you would like to run this program yourself in the terminal all you have to do is: 
 - Clone this repository.  
